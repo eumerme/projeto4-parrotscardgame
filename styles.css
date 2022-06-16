@@ -25,28 +25,50 @@ body {
 
 
 /*cards-container*/
-.cards-container {
+.game-container {
     width: auto;
     height: auto;
-    margin-top: 47px;
+    margin: 47px 5% 0 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.card {
+.card-container {
     width: 117px;
     height: 146px;
     margin: 17px;
+    position: relative;
+
+    transition: all 0.5s;
+    transform-style: preserve-3d;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
-    border: 1px solid #99CEA8;
+    border: 1px solid #99CEA8;    
     background-color: #A7E9AF;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /*safari*/
+    cursor: pointer;
 }
 
-.card > img {
-    width: 100px;
-    height: 100px;
+.back-face {
+    transform: rotateY(180deg);
 }
+
+.flip.card-container{
+    transform: rotateY(180deg);
+}
+
