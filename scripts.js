@@ -1,20 +1,26 @@
-let gameCards = Number(prompt("Com quantas cartas vocês quer jogar?"));
+let play= Number(prompt("Com quantas cartas vocês quer jogar?"));
+
 let gif = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot","revertitparrot", "tripletsparrot", "unicornparrot"];
     gif = gif.sort(comparador);
+
 let clicks = 0; //total clicks
 let index = 0; //pairs comparison
 let match = 0; //pairs match
 let card1; //pair one
 let card2; //pair two
 
+let counter = 0; //timer
+let idInterval = 0;
+idInterval = setInterval(timer2, 1000);
+
 
 //number of cards
 function numberCards (){
-    if (isNaN(gameCards) || gameCards < 4 || gameCards > 14 || (gameCards % 2 !== 0)) {
+    if (isNaN(play) || play < 4 || play > 14 || (play % 2 !== 0)) {
         alert("Você deve escolher um número par de 4 a 14.");
     }
-    while (isNaN(gameCards) || gameCards < 4 || gameCards > 14 || (gameCards % 2 !== 0)) {
-        gameCards = prompt("Com quantas cartas vocês quer jogar?");
+    while (isNaN(play) || play < 4 || play > 14 || (play % 2 !== 0)) {
+        play= prompt("Com quantas cartas vocês quer jogar?");
     }
 
     boardGame();
@@ -24,12 +30,12 @@ numberCards();
 
 //cards distribution
 function boardGame () {
-    gif = gif.slice(0, (gameCards/2));
+    gif = gif.slice(0, (play/2));
     gif = gif.concat(gif);
     
     let deck = document.querySelector(".game-container");
     gif = gif.sort(comparador);
-    for (let i = 0; i < gameCards; i++){        
+    for (let i = 0; i < play; i++){        
         deck.innerHTML += `
             <div class="card" onclick="select (this);" data-identifier="card">
                 <div class="front-face face" data-identifier="back-face" >
@@ -41,7 +47,10 @@ function boardGame () {
              </div>
         `;     
     }
+
+    timer2 ();
 }
+
 
 //cards comparison
 function select (element) {        
@@ -69,10 +78,34 @@ function select (element) {
         index--;
     }    
 
-    if (match === gameCards) {
-        setTimeout ( () => {alert(`Você ganhou em ${clicks} jogadas!`); card2.classList.remove('flip')}, 1000);
+    if (match === play) {
+        setTimeout ( () => {alert(`Parabéns! Você ganhou em ${clicks} jogadas em apenas ${counter} segundos!`); restart ()}, 1000);
     }
 }
+
+
+//timer
+function timer2 () {
+    counter++;
+    document.querySelector(".timer").innerHTML = counter;
+
+    if (match === play) {
+      clearInterval(idInterval);
+    }
+}
+
+
+//restart game
+function restart () {
+    let playAgain = prompt("Você gostaria de jogar novamente? Responda 'sim' ou 'não'");
+    playAgain = playAgain.toLowerCase();
+
+    if (playAgain === "sim"){
+        location.reload();
+    } else {
+        alert ("Poxa, tudo bem. Quando quiser é só voltar! :P")
+    }
+} 
 
 //shuffle cards
 function comparador() { 
