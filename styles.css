@@ -72,3 +72,6 @@ img {
     transform: rotateY(180deg);
 }
 
+.clicked-card{
+    pointer-events: none;
+}

@@ -1,28 +1,35 @@
-let popUp = Number(prompt("Com quantas cartas vocês quer jogar?")); 
+let gameCards = Number(prompt("Com quantas cartas vocês quer jogar?"));
 let gif = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot","revertitparrot", "tripletsparrot", "unicornparrot"];
     gif = gif.sort(comparador);
+let clicks = 0; //total clicks
+let index = 0; //pairs comparison
+let match = 0; //pairs match
+let card1; //pair one
+let card2; //pair two
 
-// choose number of cards
+
+//number of cards
 function numberCards (){
-    if (isNaN(popUp) || popUp < 4 || popUp > 14 || (popUp % 2 !== 0)) {
-        alert("Você deve escolher um número par entre 4 e 14.");
+    if (isNaN(gameCards) || gameCards < 4 || gameCards > 14 || (gameCards % 2 !== 0)) {
+        alert("Você deve escolher um número par de 4 a 14.");
     }
-    while (isNaN(popUp) || popUp < 4 || popUp > 14 || (popUp % 2 !== 0)) {
-        popUp = prompt("Com quantas cartas vocês quer jogar?");
+    while (isNaN(gameCards) || gameCards < 4 || gameCards > 14 || (gameCards % 2 !== 0)) {
+        gameCards = prompt("Com quantas cartas vocês quer jogar?");
     }
 
     boardGame();
 }
 numberCards();
 
-//selected cards
+
+//cards distribution
 function boardGame () {
-    gif = gif.slice(0, (popUp/2));
+    gif = gif.slice(0, (gameCards/2));
     gif = gif.concat(gif);
     
     let deck = document.querySelector(".game-container");
     gif = gif.sort(comparador);
-    for (let i = 0; i < popUp; i++){        
+    for (let i = 0; i < gameCards; i++){        
         deck.innerHTML += `
             <div class="card" onclick="select (this);" data-identifier="card">
                 <div class="front-face face" data-identifier="back-face" >
@@ -36,12 +43,38 @@ function boardGame () {
     }
 }
 
-//flip card
-function select (elemento) {
-    elemento.classList.toggle("flip");   
+//cards comparison
+function select (element) {        
+    clicks += 1;  
+    element.classList.add("flip");  
+
+    if (index === 0){
+        card1 = element;
+        card1.classList.add("clicked-card");
+        index++;
+        
+    } else if (index === 1){
+        card2 = element;
+        card1.classList.remove("clicked-card");
+        
+        if(card1.innerHTML === card2.innerHTML){
+            card1.classList.add("clicked-card");
+            card2.classList.add("clicked-card");
+            match += 2;
+
+        } else {
+            setTimeout ( () => {card1.classList.remove('flip'); card2.classList.remove('flip')}, 1000);
+        }
+
+        index--;
+    }    
+
+    if (match === gameCards) {
+        setTimeout ( () => {alert(`Você ganhou em ${clicks} jogadas!`); card2.classList.remove('flip')}, 1000);
+    }
 }
 
-//notion
+//shuffle cards
 function comparador() { 
 	return Math.random() - 0.5; 
 }
