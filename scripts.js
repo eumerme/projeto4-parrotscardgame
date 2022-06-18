@@ -1,4 +1,4 @@
-let play= Number(prompt("Com quantas cartas vocês quer jogar?"));
+let play = Number(prompt("Bem vinde! Com quantas cartas vocês quer jogar?"));
 
 let gif = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot","revertitparrot", "tripletsparrot", "unicornparrot"];
     gif = gif.sort(comparador);
@@ -35,6 +35,7 @@ function boardGame () {
     
     let deck = document.querySelector(".game-container");
     gif = gif.sort(comparador);
+
     for (let i = 0; i < play; i++){        
         deck.innerHTML += `
             <div class="card" onclick="select (this);" data-identifier="card">
@@ -72,14 +73,14 @@ function select (element) {
             match += 2;
 
         } else {
-            setTimeout ( () => {card1.classList.remove('flip'); card2.classList.remove('flip')}, 1000);
+            setTimeout ( () => {card1.classList.remove("flip"); card2.classList.remove("flip")}, 1000);
         }
 
         index--;
     }    
 
     if (match === play) {
-        setTimeout ( () => {alert(`Parabéns! Você ganhou em ${clicks} jogadas em apenas ${counter} segundos!`); restart ()}, 1000);
+        setTimeout ( () => {alert(`Parabéns! Você levou ${counter} segundos para vencer em ${clicks} jogadas!`); restart ()}, 1000);
     }
 }
 
@@ -97,13 +98,13 @@ function timer2 () {
 
 //restart game
 function restart () {
-    let playAgain = prompt("Você gostaria de jogar novamente? Responda 'sim' ou 'não'");
+    let playAgain = prompt("Gostaria de jogar novamente? Responda 'sim' ou 'não'");
     playAgain = playAgain.toLowerCase();
 
     if (playAgain === "sim"){
         location.reload();
     } else {
-        alert ("Poxa, tudo bem. Quando quiser é só voltar! :P")
+        alert ("Poxaaa, mas tudo bem. Quando quiser é só voltar!");
     }
 } 
 

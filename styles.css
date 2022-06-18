@@ -79,6 +79,7 @@ img {
     pointer-events: none;
 }
 
+
 /*timer*/ 
 .timer {
     width: 30px;
@@ -92,6 +93,14 @@ img {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 29%;
+    top: 20%;
     right: 2%;
+}
+
+
+/*breackpoint*/ 
+@media (max-width: 614px) {
+    .timer {
+        top: 30%;
+    }
 }
