@@ -20,7 +20,7 @@ function numberCards (){
         alert("Você deve escolher um número par de 4 a 14.");
     }
     while (isNaN(play) || play < 4 || play > 14 || (play % 2 !== 0)) {
-        play= prompt("Com quantas cartas você quer jogar?");
+        play = prompt("Com quantas cartas você quer jogar?");
     }
 
     boardGame();
@@ -95,17 +95,22 @@ function timer2 () {
 }
 
 
+   
 //restart game
 function restart () {
     let playAgain = prompt("Gostaria de jogar novamente? Responda 'sim' ou 'não'");
     playAgain = playAgain.toLowerCase();
 
-    if (playAgain === "sim"){
+    if (playAgain === "sim" || playAgain === "s"){
         location.reload();
-    } else {
+
+    } else if (playAgain === "não" || playAgain === "nao" || playAgain === "n") {
         alert ("Poxaaa, mas tudo bem. Quando quiser é só voltar!");
         document.querySelector(".button").classList.remove("hide");
-    }
+    } else {
+        alert("Como você não respondeu 'sim' ou 'não' especificamente, caso queira jogar novamente aperte o botão 'Restart'");
+        document.querySelector(".button").classList.remove("hide");
+    }    
 } 
 
 
