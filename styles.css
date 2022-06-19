@@ -14,7 +14,7 @@ body {
 
 
 /*game title*/
-.game-title {
+.game-title {    
     font-size: 56px;
     font-weight: 700;
     color: #75b79e;
@@ -82,25 +82,39 @@ img {
 
 /*timer*/ 
 .timer {
-    width: 30px;
+    width: 40px;
     height: 30px;
-    color: #3d572d;
+    color: #35581e;
     background-color: #75b79e;
     box-shadow: 0 0 10px -3px rgba(119,178,85, 0.25);
-    border-radius: 50%;
+    border-radius: 10px 0 0 10px;
     opacity: 0.8;
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     top: 20%;
-    right: 2%;
+    right: 0;
 }
 
 
-/*breackpoint*/ 
-@media (max-width: 614px) {
-    .timer {
-        top: 30%;
-    }
+/*restart button*/ 
+.button {
+    width: 60px;
+    height: 30px;
+    color: #35581e;
+    background-color: #75b79e;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 10px -3px rgba(119,178,85, 0.25);
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20%;
+    left: 1%;
+}
+
+.hide {
+    display: none;
 }

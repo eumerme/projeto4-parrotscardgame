@@ -1,4 +1,4 @@
-let play = Number(prompt("Bem vinde! Com quantas cartas vocês quer jogar?"));
+let play = Number(prompt("Com quantas cartas você quer jogar?"));
 
 let gif = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot","revertitparrot", "tripletsparrot", "unicornparrot"];
     gif = gif.sort(comparador);
@@ -20,7 +20,7 @@ function numberCards (){
         alert("Você deve escolher um número par de 4 a 14.");
     }
     while (isNaN(play) || play < 4 || play > 14 || (play % 2 !== 0)) {
-        play= prompt("Com quantas cartas vocês quer jogar?");
+        play= prompt("Com quantas cartas você quer jogar?");
     }
 
     boardGame();
@@ -48,30 +48,29 @@ function boardGame () {
              </div>
         `;     
     }
-
-    timer2 ();
 }
 
 
 //cards comparison
-function select (element) {        
+function select (element) { 
+    timer2 ();       
     clicks += 1;  
     element.classList.add("flip");  
 
     if (index === 0){
         card1 = element;
-        card1.classList.add("clicked-card");
+        card1.classList.add("clicked-card"); 
         index++;
         
     } else if (index === 1){
         card2 = element;
-        card1.classList.remove("clicked-card");
-        
+        card1.classList.remove("clicked-card"); 
+
         if(card1.innerHTML === card2.innerHTML){
             card1.classList.add("clicked-card");
             card2.classList.add("clicked-card");
-            match += 2;
-
+            match += 2; 
+            
         } else {
             setTimeout ( () => {card1.classList.remove("flip"); card2.classList.remove("flip")}, 1000);
         }
@@ -105,8 +104,17 @@ function restart () {
         location.reload();
     } else {
         alert ("Poxaaa, mas tudo bem. Quando quiser é só voltar!");
+        document.querySelector(".button").classList.remove("hide");
     }
 } 
+
+
+//restart game button
+function restartButton (element){
+    location.reload();
+    document.querySelector(".button").classList.add("hide");
+}
+
 
 //shuffle cards
 function comparador() { 
