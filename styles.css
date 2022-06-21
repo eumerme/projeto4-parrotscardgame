@@ -86,7 +86,8 @@ img {
 /*buttons*/
 .buttons {
     display: flex;
-    margin-top: 30px;
+    justify-content: center;
+    margin: 30px 0;
 }
  
 .timer {
@@ -100,7 +101,6 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 30px;
 }
 
 .restart-button {
@@ -114,16 +114,9 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 30px;
 }
 
 .hide {
     display: none;
-}
-
-
-/*breackpoint 614px*/
-@media (max-width: 614px){
-    .game-container {
-        flex-direction: column;
-    }
 }

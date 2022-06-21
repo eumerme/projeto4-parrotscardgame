@@ -114,7 +114,7 @@ function restart () {
         document.querySelector(".buttons .restart-button").classList.remove("hide");
 
     } else {
-        alert("Como você não respondeu 'sim' ou 'não' especificamente, caso queira jogar novamente aperte o botão 'Restart', caso não queira até a próxima");
+        alert("Como você não respondeu 'sim' ou 'não' especificamente, caso queira jogar novamente aperte o botão 'Restart' e, caso não queira, até a próxima!");
         document.querySelector(".buttons .restart-button").classList.remove("hide");
     }    
 } 
