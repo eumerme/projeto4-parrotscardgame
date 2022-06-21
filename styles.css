@@ -40,7 +40,6 @@ body {
     width: 117px;
     height: 146px;
     margin: 17px;
-    position: relative;
 
     transition: all 0.5s;
     transform-style: preserve-3d;
@@ -75,31 +74,36 @@ img {
     transform: rotateY(180deg);
 }
 
-.clicked-card{
+.clicked-card {
+    pointer-events: none;
+}
+
+.not-selected {
     pointer-events: none;
 }
 
 
-/*timer*/ 
+/*buttons*/
+.buttons {
+    display: flex;
+    margin-top: 30px;
+}
+ 
 .timer {
     width: 40px;
     height: 30px;
     color: #35581e;
     background-color: #75b79e;
     box-shadow: 0 0 10px -3px rgba(119,178,85, 0.25);
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 10px 10px 10px;
     opacity: 0.8;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 20%;
-    right: 0;
+    margin: 0 30px;
 }
 
-
-/*restart button*/ 
-.button {
+.restart-button {
     width: 60px;
     height: 30px;
     color: #35581e;
@@ -110,11 +114,16 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 20%;
-    left: 1%;
 }
 
 .hide {
     display: none;
+}
+
+
+/*breackpoint 614px*/
+@media (max-width: 614px){
+    .game-container {
+        flex-direction: column;
+    }
 }

@@ -57,6 +57,7 @@ function select (element) {
     clicks += 1;  
     element.classList.add("flip");  
 
+    
     if (index === 0){
         card1 = element;
         card1.classList.add("clicked-card"); 
@@ -64,7 +65,7 @@ function select (element) {
         
     } else if (index === 1){
         card2 = element;
-        card1.classList.remove("clicked-card"); 
+        card2.classList.add("clicked-card"); 
 
         if(card1.innerHTML === card2.innerHTML){
             card1.classList.add("clicked-card");
@@ -73,6 +74,8 @@ function select (element) {
             
         } else {
             setTimeout ( () => {card1.classList.remove("flip"); card2.classList.remove("flip")}, 1000);
+
+            setTimeout ( () => {card1.classList.remove("clicked-card"); card2.classList.remove("clicked-card")}, 1000);
         }
 
         index--;
@@ -81,6 +84,8 @@ function select (element) {
     if (match === play) {
         setTimeout ( () => {alert(`Parabéns! Você levou ${counter} segundos para vencer em ${clicks} jogadas!`); restart ()}, 1000);
     }
+
+    console.log(card1, card2, index)
 }
 
 
@@ -106,10 +111,11 @@ function restart () {
 
     } else if (playAgain === "não" || playAgain === "nao" || playAgain === "n") {
         alert ("Poxaaa, mas tudo bem. Quando quiser é só voltar!");
-        document.querySelector(".button").classList.remove("hide");
+        document.querySelector(".buttons .restart-button").classList.remove("hide");
+
     } else {
-        alert("Como você não respondeu 'sim' ou 'não' especificamente, caso queira jogar novamente aperte o botão 'Restart'");
-        document.querySelector(".button").classList.remove("hide");
+        alert("Como você não respondeu 'sim' ou 'não' especificamente, caso queira jogar novamente aperte o botão 'Restart', caso não queira até a próxima");
+        document.querySelector(".buttons .restart-button").classList.remove("hide");
     }    
 } 
 
@@ -117,7 +123,7 @@ function restart () {
 //restart game button
 function restartButton (element){
     location.reload();
-    document.querySelector(".button").classList.add("hide");
+    document.querySelector(".buttons .restart-button").classList.add("hide");
 }
 
 
